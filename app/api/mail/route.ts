@@ -45,7 +45,6 @@ export async function POST(request: NextRequest) {
       to: "dkmanwani2000@gmail.com",
       subject: `Portfolio Contact: ${subject}`,
       html: emailContent,
-      replyTo: email || "portfolio@updates.bydm.site",
     });
 
     console.log("resend result::::::::::::::::", result);
