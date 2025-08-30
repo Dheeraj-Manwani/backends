@@ -63,18 +63,24 @@ export async function POST(request: NextRequest) {
 
     if (result.error) {
       console.error("Resend error:", result.error);
-      return NextResponse.json(
+      const res = NextResponse.json(
         { error: "Failed to send email" },
         { status: 500 }
       );
+      res.headers.set("Access-Control-Allow-Origin", "*");
+      return res;
     }
 
-    return NextResponse.json({ success: true });
+    const res = NextResponse.json({ success: true });
+    res.headers.set("Access-Control-Allow-Origin", "*");
+    return res;
   } catch (error) {
     console.error("API error:", error);
-    return NextResponse.json(
+    const res = NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
     );
+    res.headers.set("Access-Control-Allow-Origin", "*");
+    return res;
   }
 }
